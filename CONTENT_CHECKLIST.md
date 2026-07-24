@@ -1,0 +1,25 @@
+# Content replacement checklist
+
+- [ ] Confirm phone number
+- [ ] Confirm WhatsApp number and update both code references
+- [ ] Confirm enquiry email
+- [ ] Confirm office address and Google Maps link
+- [ ] Confirm business hours
+- [ ] Add approved Instagram, Facebook and LinkedIn URLs
+- [ ] Confirm years of experience
+- [ ] Confirm completed-project count
+- [ ] Confirm workforce count
+- [ ] Confirm districts served
+- [ ] Confirm delivered floor area
+- [ ] Add contractor registration number
+- [ ] Add GST number
+- [ ] Add only verified certifications
+- [ ] Add founding history and company milestones
+- [ ] Add approved leadership profiles
+- [ ] Replace every sample project with verified title, client type and scope
+- [ ] Replace placeholder years, areas, durations and contract types
+- [ ] Replace generated concept imagery with real project photography
+- [ ] Obtain approval for every testimonial and client reference
+- [ ] Replace `.example` domain in metadata, sitemap and structured data
+- [ ] Add final Open Graph/social preview image
+- [ ] Review legal and privacy wording before public launch
