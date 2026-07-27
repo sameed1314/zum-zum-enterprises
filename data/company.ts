@@ -8,7 +8,7 @@ export const company = {
   whatsapp: "+91 [WHATSAPP NUMBER]",
   whatsappHref:
     "https://wa.me/910000000000?text=Hello%2C%20I%20would%20like%20to%20discuss%20a%20construction%20project%20with%20Zum%20Zum%20Enterprises.",
-  email: "[EMAIL ADDRESS]",
+  email: "projects@zumzumenterprises.example",
   emailHref: "mailto:projects@zumzumenterprises.example",
   address: "[OFFICE ADDRESS], Jammu & Kashmir, India",
   mapsLink: "#",
@@ -35,4 +35,3 @@ export const navigation = [
   { href: "/quality-safety", label: "Quality & Safety" },
   { href: "/contact", label: "Contact" },
 ] as const;
-
