@@ -5,6 +5,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
    CREATE TYPE "public"."enum_users_role" AS ENUM('super-admin', 'editor', 'enquiry-manager');
   CREATE TYPE "public"."enum_media_category" AS ENUM('Project', 'Company', 'Team', 'Certification', 'Website', 'Document');
   CREATE TYPE "public"."enum_projects_gallery_layout" AS ENUM('standard', 'wide', 'portrait');
+  CREATE TYPE "public"."enum_projects_project_status" AS ENUM('ongoing', 'completed', 'upcoming');
   CREATE TYPE "public"."enum_projects_status" AS ENUM('draft', 'published');
   CREATE TYPE "public"."enum__projects_v_version_gallery_layout" AS ENUM('standard', 'wide', 'portrait');
   CREATE TYPE "public"."enum__projects_v_version_status" AS ENUM('draft', 'published');
@@ -150,7 +151,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"location" varchar,
   	"district" varchar,
   	"year" varchar,
-  	"status" "enum_projects_status" DEFAULT 'completed',
+	"status" "enum_projects_project_status" DEFAULT 'completed',
   	"client_type" varchar,
   	"featured" boolean DEFAULT false,
   	"display_order" numeric DEFAULT 0,
@@ -244,7 +245,7 @@ export async function up({ db, payload, req }: MigrateUpArgs): Promise<void> {
   	"version_location" varchar,
   	"version_district" varchar,
   	"version_year" varchar,
-  	"version_status" "enum__projects_v_version_status" DEFAULT 'completed',
+	"version_status" "enum_projects_project_status" DEFAULT 'completed',
   	"version_client_type" varchar,
   	"version_featured" boolean DEFAULT false,
   	"version_display_order" numeric DEFAULT 0,
@@ -1662,6 +1663,7 @@ export async function down({ db, payload, req }: MigrateDownArgs): Promise<void>
   DROP TYPE "public"."enum_users_role";
   DROP TYPE "public"."enum_media_category";
   DROP TYPE "public"."enum_projects_gallery_layout";
+  DROP TYPE "public"."enum_projects_project_status";
   DROP TYPE "public"."enum_projects_status";
   DROP TYPE "public"."enum__projects_v_version_gallery_layout";
   DROP TYPE "public"."enum__projects_v_version_status";

@@ -99,7 +99,7 @@ export default buildConfig({
   db: postgresAdapter({
     pool: { connectionString: env.databaseURI },
     migrationDir: path.resolve(dirname, "src/migrations"),
-    push: process.env.NODE_ENV !== "production",
+    push: false,
   }),
   editor: lexicalEditor(),
   email,
