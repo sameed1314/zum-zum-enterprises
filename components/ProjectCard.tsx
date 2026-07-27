@@ -1,13 +1,24 @@
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
-import type { Project } from "@/data/projects";
+import type { ProjectCardData } from "@/src/lib/content-types";
 
-export function ProjectCard({ project, priority = false }: { project: Project; priority?: boolean }) {
+const statusLabel = (status: ProjectCardData["status"]) =>
+  status[0].toUpperCase() + status.slice(1);
+
+export function ProjectCard({ project, priority = false }: { project: ProjectCardData; priority?: boolean }) {
   return (
     <article className="project-card">
       <Link href={`/projects/${project.slug}`} aria-label={`View ${project.title}`}>
         <div className="project-image">
-          <img src={project.coverImage} alt={`${project.title} placeholder project image`} width="1200" height="900" loading={priority ? "eager" : "lazy"} />
+          <Image
+            src={project.coverImage.url}
+            alt={project.coverImage.alt}
+            width={1200}
+            height={900}
+            priority={priority}
+            sizes="(max-width: 800px) 100vw, 50vw"
+          />
           <div className="project-card-index">0{project.displayOrder}</div>
           <span className="project-card-open"><ArrowUpRight aria-hidden="true" /></span>
         </div>
@@ -15,11 +26,10 @@ export function ProjectCard({ project, priority = false }: { project: Project; p
           <div><p>{project.category}</p><h3>{project.title}</h3></div>
           <dl>
             <div><dt>Location</dt><dd>{project.location}</dd></div>
-            <div><dt>Status</dt><dd>{project.status}</dd></div>
+            <div><dt>Status</dt><dd>{statusLabel(project.status)}</dd></div>
           </dl>
         </div>
       </Link>
     </article>
   );
 }
-

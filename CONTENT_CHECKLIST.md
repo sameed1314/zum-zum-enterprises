@@ -1,7 +1,7 @@
 # Content replacement checklist
 
 - [ ] Confirm phone number
-- [ ] Confirm WhatsApp number and update both code references
+- [ ] Confirm WhatsApp number in Site Settings
 - [ ] Confirm enquiry email
 - [ ] Confirm office address and Google Maps link
 - [ ] Confirm business hours
@@ -20,6 +20,6 @@
 - [ ] Replace placeholder years, areas, durations and contract types
 - [ ] Replace generated concept imagery with real project photography
 - [ ] Obtain approval for every testimonial and client reference
-- [ ] Replace `.example` domain in metadata, sitemap and structured data
+- [ ] Set the production domain in Site Settings and `NEXT_PUBLIC_SERVER_URL`
 - [ ] Add final Open Graph/social preview image
 - [ ] Review legal and privacy wording before public launch
