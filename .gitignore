@@ -39,5 +39,12 @@ next-env.d.ts
 /dist/
 /.wrangler/
 /.sites-runtime/
+
+# Payload
+/media/
+.env
+.env.local
+.env.*.local
+!.env.example
 /outputs/
 /work/

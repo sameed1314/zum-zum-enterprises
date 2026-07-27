@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: zum_zum_enterprises
+      POSTGRES_USER: payload
+      POSTGRES_PASSWORD: payload
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U payload -d zum_zum_enterprises"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - zum_zum_postgres:/var/lib/postgresql/data
+
+volumes:
+  zum_zum_postgres:

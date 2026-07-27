@@ -208,6 +208,11 @@ img { display: block; max-width: 100%; }
 .project-story-grid p,.project-story-grid li { color: #696359; font-size: .88rem; line-height: 1.7; }
 .project-gallery { display: grid; grid-template-columns: 1.2fr .8fr; gap: 12px; padding: 12px; background: var(--ink); }
 .project-gallery img { width: 100%; height: 100%; min-height: 460px; object-fit: cover; }
+.project-gallery figure { position: relative; min-width: 0; margin: 0; }
+.project-gallery figcaption { position: absolute; right: 18px; bottom: 18px; left: 18px; padding: 10px 12px; background: rgba(17,19,16,.78); color: var(--white); font-size: .68rem; line-height: 1.5; backdrop-filter: blur(10px); }
+.project-outcome { margin-top: 46px; padding-top: 32px; border-top: 1px solid var(--border-light); }
+.preview-banner { position: fixed; z-index: 190; right: 18px; bottom: 18px; display: flex; gap: 18px; align-items: center; padding: 12px 18px; border: 1px solid var(--border-dark); border-radius: 100px; background: var(--ink); color: var(--white); font-size: .68rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
+.preview-banner a { color: var(--copper-bright); text-decoration: underline; }
 .project-next { display: flex; align-items: center; justify-content: space-between; gap: 30px; padding: 70px clamp(22px,6vw,94px); background: var(--forest); color: var(--white); }
 .project-next p { margin: 0; font-family: var(--display); font-size: clamp(2rem,4vw,4.4rem); font-weight: 800; letter-spacing: -.05em; text-transform: uppercase; }
 .services-page-list { border-top: 1px solid var(--border-light); }
@@ -240,9 +245,24 @@ img { display: block; max-width: 100%; }
 .contact-form textarea { padding: 14px 0; resize: vertical; }
 .contact-form input:focus,.contact-form select:focus,.contact-form textarea:focus { border-bottom-color: var(--copper-bright); }
 .contact-form select option { background: var(--ink); }
+.contact-form input[type="checkbox"] { width: auto; height: auto; accent-color: var(--copper); }
+.consent-field > span { display: flex; gap: 10px; align-items: flex-start; color: rgba(255,255,255,.74); font-size: .72rem; font-weight: 500; letter-spacing: 0; line-height: 1.5; text-transform: none; }
+.honeypot { position: absolute !important; left: -9999px !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
+.field-error,.form-error { color: #ffb79a; font-size: .66rem; font-weight: 600; letter-spacing: 0; line-height: 1.4; text-transform: none; }
+.form-error { padding: 12px 14px; border: 1px solid rgba(255,183,154,.4); }
+.contact-form button:disabled { opacity: .62; cursor: wait; transform: none; }
+.form-success { display: flex; min-height: 480px; flex-direction: column; justify-content: center; align-items: flex-start; }
+.form-success h2 { margin: 20px 0; font-family: var(--display); font-size: clamp(2.5rem,5vw,5.5rem); line-height: .92; text-transform: uppercase; }
+.form-success > p:not(.eyebrow) { max-width: 560px; color: rgba(255,255,255,.64); line-height: 1.7; }
 .form-submit-row { display: flex; gap: 30px; align-items: center; justify-content: space-between; margin-top: 18px; }
 .form-submit-row p { max-width: 400px; color: rgba(255,255,255,.45); font-size: .63rem; line-height: 1.6; }
 .email-fallback { display: inline-block; margin-top: 24px; color: rgba(255,255,255,.58); font-size: .68rem; text-decoration: underline; }
+.empty-state { padding: clamp(80px,12vw,160px) clamp(22px,6vw,94px); text-align: center; }
+.empty-state h2 { max-width: 900px; margin: 22px auto 0; font-family: var(--display); font-size: clamp(3rem,7vw,7rem); letter-spacing: -.06em; line-height: .9; text-transform: uppercase; }
+.certification-list { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; margin-top: 55px; background: var(--border-dark); }
+.certification-list article { padding: 28px; background: var(--forest); }
+.certification-list h3 { margin: 0 0 12px; font-family: var(--display); font-size: 1.5rem; text-transform: uppercase; }
+.certification-list p { margin: 5px 0; color: rgba(255,255,255,.62); font-size: .74rem; }
 
 @keyframes hero-settle { from { opacity: 0; transform: scale(1.055); } to { opacity: 1; transform: scale(1); } }
 
@@ -285,6 +305,7 @@ img { display: block; max-width: 100%; }
   .service-detail { grid-template-columns: 50px 1fr; }
   .service-detail > div { grid-column: 2; }
   .project-gallery { grid-template-columns: 1fr; }
+  .certification-list { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
   .wordmark strong { font-size: .8rem; }

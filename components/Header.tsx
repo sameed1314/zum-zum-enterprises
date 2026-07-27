@@ -4,9 +4,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { company, navigation } from "@/data/company";
+import type { SiteSettingsData } from "@/src/lib/content-types";
 
-export function Header() {
+export function Header({ settings }: { settings: SiteSettingsData }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -27,16 +27,16 @@ export function Header() {
   return (
     <>
       <header className={`site-header ${scrolled ? "is-scrolled" : ""}`}>
-        <Link className="wordmark" href="/" aria-label="Zum Zum Enterprises home">
+        <Link className="wordmark" href="/" aria-label={`${settings.fullCompanyName} home`}>
           <span className="wordmark-mark">ZZ</span>
-          <span><strong>Zum Zum</strong><small>Enterprises</small></span>
+          <span><strong>{settings.shortCompanyName}</strong><small>Enterprises</small></span>
         </Link>
         <nav className="desktop-nav" aria-label="Primary navigation">
-          {navigation.map((item) => <Link key={item.href} href={item.href}>{item.label}</Link>)}
+          {settings.navigation.map((item) => <Link key={`${item.url}-${item.label}`} href={item.url} target={item.newTab ? "_blank" : undefined} rel={item.newTab ? "noreferrer" : undefined}>{item.label}</Link>)}
         </nav>
         <div className="header-actions">
-          <Link className="button button-copper header-cta" href="/contact">
-            Start a project <ArrowUpRight size={17} aria-hidden="true" />
+          <Link className="button button-copper header-cta" href={settings.primaryCTA.url}>
+            {settings.primaryCTA.label} <ArrowUpRight size={17} aria-hidden="true" />
           </Link>
           <button className="menu-toggle" type="button" onClick={() => setOpen(true)} aria-label="Open navigation" aria-expanded={open}>
             <Menu aria-hidden="true" />
@@ -51,16 +51,16 @@ export function Header() {
               <button type="button" onClick={() => setOpen(false)} aria-label="Close navigation"><X aria-hidden="true" /></button>
             </div>
             <nav aria-label="Mobile navigation">
-              {navigation.map((item, index) => (
-                <motion.div key={item.href} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.12 + index * 0.045 }}>
-                  <Link href={item.href} onClick={() => setOpen(false)}><span>0{index + 1}</span>{item.label}</Link>
+              {settings.navigation.map((item, index) => (
+                <motion.div key={`${item.url}-${item.label}`} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.12 + index * 0.045 }}>
+                  <Link href={item.url} target={item.newTab ? "_blank" : undefined} rel={item.newTab ? "noreferrer" : undefined} onClick={() => setOpen(false)}><span>0{index + 1}</span>{item.label}</Link>
                 </motion.div>
               ))}
             </nav>
             <div className="mobile-menu-contact">
-              <p>{company.classification}</p>
-              <a href={company.emailHref}>{company.email}</a>
-              <a href={company.phoneHref}>{company.phone}</a>
+              <p>{settings.contractorClassification}</p>
+              {settings.emailAddresses[0] && <a href={`mailto:${settings.emailAddresses[0].email}`}>{settings.emailAddresses[0].email}</a>}
+              {settings.phoneNumbers[0] && <a href={`tel:${settings.phoneNumbers[0].number.replace(/[^\d+]/g, "")}`}>{settings.phoneNumbers[0].number}</a>}
             </div>
           </motion.div>
         )}
@@ -68,4 +68,3 @@ export function Header() {
     </>
   );
 }
-
